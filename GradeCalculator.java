@@ -37,15 +37,15 @@ System.out.println("Adios");
 scanner.close();
 }
 // Pide una nota y repite la pregunta hasta que esté entre 0 y 10
-    public static double readGrade(Scanner scanner, String message) {
-        double grade;
-        do {
-            System.out.print(message);
-            grade = scanner.nextDouble();
-            if (grade < 0 || grade > 10) {
-                System.out.println("Invalid grade. It must be between 0 and 10.");
-            }
-        } while (grade < 0 || grade > 10);
-        return grade;
-    }
+public static double readGrade(Scanner scanner, String message) {
+double grade;
+do {
+System.out.print(message);
+grade = scanner.nextDouble();
+if (grade < 0 || grade > 10) {
+System.out.println("Invalid grade. It must be between 0 and 10.");
+}
+} while (grade < 0 || grade > 10);
+return grade;
+}
 }
