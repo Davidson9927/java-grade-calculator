@@ -5,21 +5,16 @@ public static void main(String[] args) {
 Scanner scanner = new Scanner(System.in);
 scanner.useLocale(Locale.US);
 String again;
-System.out.println("=== STUDENT===");
 do {
 System.out.print("Enter your name: ");
-String Tunombre = scanner.nextLine();
+String StudentName = scanner.nextLine();
 System.out.println("=== STUDENT GRADE CALCULATOR ===");
-System.out.print("Enter the first grade: ");
-double grade1 = scanner.nextDouble();
-System.out.print("Enter the second grade: ");
-double grade2 = scanner.nextDouble();
-System.out.print("Enter the third grade: ");
-double grade3 = scanner.nextDouble();
+double grade1 = readGrade(scanner, "Enter the first grade (0-10): ");
+double grade2 = readGrade(scanner, "Enter the second grade (0-10): ");
+double grade3 = readGrade(scanner, "Enter the third grade (0-10): ");
 double average = (grade1 + grade2 + grade3) / 3;
-// Punto 3: nota más alta y más baja
 double highest = Math.max(grade1, Math.max(grade2, grade3));
-System.out.println("\nStudent: " + Tunombre);
+System.out.println("\nStudent: " + StudentName);
 double lowest = Math.min(grade1, Math.min(grade2, grade3));
 // Punto 4: media con dos decimales
 System.out.printf("%nStudent average: %.2f%n", average);
@@ -41,4 +36,16 @@ System.out.println();
 System.out.println("Adios");
 scanner.close();
 }
+// Pide una nota y repite la pregunta hasta que esté entre 0 y 10
+    public static double readGrade(Scanner scanner, String message) {
+        double grade;
+        do {
+            System.out.print(message);
+            grade = scanner.nextDouble();
+            if (grade < 0 || grade > 10) {
+                System.out.println("Invalid grade. It must be between 0 and 10.");
+            }
+        } while (grade < 0 || grade > 10);
+        return grade;
+    }
 }
